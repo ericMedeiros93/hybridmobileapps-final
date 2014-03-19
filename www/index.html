@@ -5,22 +5,31 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<title>nulogx Mobile</title>
-	<link rel="stylesheet" href="css/themes/nulogx.min.css" />
-    <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile.structure-1.4.2.min.css" /> 
+	<link rel="stylesheet" href="css/themes/nulogxgreen.min.css" />
+	<link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile.structure-1.4.2.min.css" />
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css"/>
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script src="js/jquery.mobile-1.4.2.min.js"></script>
+	<script type="text/javascript" src="~/js/map.js"></script>
+	<script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCu2hB1nJpk4KdeSL2o6ZOfvRwwOqc3Wyg&sensor=false">
+    </script>
 </head>
-<body>
+<body onload="initialize()">
 <!-- Page 1 -->
-<div data-role="page" id="home">
+<div data-role="page" id="home" data-theme="b">
 	
 	<div data-role="header">
 		<h1>nulogx Mobile</h1>
 	</div>
 	<div data-role="content">
-		
+		<ul data-role="listview" id="drivers">
+			<li>George</li>
+			<li>Fred</li>
+			<li>Alfonzo</li>
+		</ul>
+	<div id="map-canvas" style="height:100%; width:100%"></div>
 	</div>
 	<div data-role="footer">
 		<h4>Developed by NaN</h4>
