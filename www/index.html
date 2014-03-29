@@ -64,6 +64,35 @@
 	-->
 	
 	<script>
+$(document).on('pagecreate', '#home', function() {
+	if (navigator.geolocation) {
+		function success(pos) {
+			drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude); 
+
+        }
+        function fail(pos) {
+        	drawMap(new google.maps.LatLng(38.50, -90.50);
+        }
+		navigator.geolocation.getCurrentPosition(success, fail, {maximumAge: 500000, enableHighAccuracy:true, timeout: 6000});
+	}
+	else {
+		drawMap(new google.maps.LatLng(38.50, -90.50);
+	}
+	
+	function drawMap(latlng) {
+        var myOptions = {
+            zoom: 10,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+	}
+});
+
+
+
+
+/*
 $(document).on('pagecreate', '#home',function(){    
            var minZoomLevel = 8;
  
@@ -73,6 +102,7 @@ $(document).on('pagecreate', '#home',function(){
               mapTypeId: google.maps.MapTypeId.ROADMAP
            });
 });
+*/
 	</script>
 </head>
 
@@ -82,9 +112,22 @@ $(document).on('pagecreate', '#home',function(){
 	
 	<div data-role="header">
 		<h1>nulogx Mobile</h1>
+		<nav data-role="navbar">
+			<ul>
+				<li><a href="index.html" class="ui-btn-active ui-state-persist" data-icon="home" data-iconpos="top">Home</a></li>
+				<li><a href="claim.html" data-ajax="false" data-icon="edit" data-iconpos="top">Submit Claim</a></li>
+				<li><a href="map.html" data-ajax="false" data-icon="location" data-iconpos="top">Check Map</a></li>
+				<li><a href="start.html" data-ajax="false" data-icon="check" data-iconpos="top">Start Route</a></li>
+				<li><a href="settings.html" data-ajax="false" data-icon="gear" data-iconpos="top">Settings</a></li>
+			</ul>
+		</nav>
 	</div>
 	<div data-role="content" id="content">
 		<div id="map_canvas"></div>
+		
+		<div class="ui-grid-d center">
+			<div class="ui-block-a"><a class="ui-shadow ui-btn ui-corner-all ui-icon-gear ui-btn-icon-notext ui-btn-inline">Button</a></div>
+		</div>
 	</div>
 	<div data-role="footer">
 		<h4>Developed by NaN</h4>
