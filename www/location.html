@@ -20,6 +20,7 @@
 	</style>
 	
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+	<link rel="stylesheet" href="css/themes/nulogx-green.min.css" />
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
 	<script type="text/javascript" src="http://jquery-ui-map.googlecode.com/svn/trunk/ui/min/jquery.ui.map.full.min.js"></script>
@@ -41,7 +42,7 @@
 	-->
 	
 	<script>
-$(document).on('pagecreate', '#home', function() {
+$(document).on('pagebeforeshow', '#location', function() {
 	if ( navigator.geolocation ) {
 		function success(pos) {
 			drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude)); 
@@ -91,9 +92,10 @@ $(document).on('pagecreate', '#home', function() {
 
 <body>
 <!-- Page 1 -->
-<div data-role="page" id="home" data-theme="a">
+<div data-role="page" id="location" data-theme="a">
 	
 	<div data-role="header">
+		<a href="../" data-rel="back">Back</a>
 		<h1>nulogx Mobile</h1>
 		<nav data-role="navbar">
 			<ul>
@@ -107,9 +109,6 @@ $(document).on('pagecreate', '#home', function() {
 	</div>
 	<div data-role="content" class="ui-content" id="content">
 		<div id="map_canvas"></div>
-	</div>
-	<div data-role="footer">
-		<h4>Developed by NaN</h4>
 	</div>
 </div>
 </body>
