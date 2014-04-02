@@ -26,25 +26,30 @@
     </script>
 	<script type="text/javascript">
 	$(document).ready(function() {
+
+	});
+	function validateForm() {
 		$.ajax({
 			url : 'json/accounts.json',                          
 			type: 'GET',                   
 			dataType:'json', 			
 			success : function(data) {
 				for (var i=0; i < data.length; i++) {
-					var un = data[i].username.value;
-					alert(un);
+					var un = data[i].username;
+					//alert(user);
+					//alert(un);
+					//alert();
+					/*
+					if (document.getElementById("un") === un) {
+						if (document.getElementById("pw") === data[i].password) {
+							alert("You are now signed in.");
+						}
+					}
+					*/
 				}
 			}
 		});
-		
-		function validateForm() {
-			for (var i=0; i < account.length; i++) {
-				var un = account[i].username;
-				alert(un);
-			}
-		}
-	});
+	}
 	$(document).on('pagebeforeshow', '#home', function() {
 		if (localStorage) {
 			var fS=localStorage.getItem("fS");
