@@ -12,9 +12,6 @@
 		#form1 {
 			width:100%;
 		}
-		.lgFont {
-			font-weight:bold;
-		}
 	</style>
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
 	<link rel="stylesheet" href="css/themes/nulogx-green.min.css" />
@@ -32,7 +29,10 @@
 		if (localStorage) {
 			var fS=localStorage.getItem("fS");
 			if (fS === "lg") {
-				$('p').css({"font-size":"200%"});
+				$('#signInHeader').css({"font-size":"200%"});
+			}
+			else if (fS === "sm") {
+				$('#signInHeader').css({"font-size":"100%"});
 			}
 		}
 	});

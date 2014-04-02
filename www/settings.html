@@ -18,22 +18,15 @@
 	<script src="js/modernizr.custom.33580.js"></script>
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
 	<script type="text/javascript">
-	$(document).ready(function() {
-		/*
-		if (localStorage) {
-			var fS=localStorage.getItem("fS");
-			if (fS === "lg") {
-				$('[name=font-size]').val("lg").slider('refresh');
-			}
-		}
-		*/
-	});
 	$(document).on('pagebeforeshow', '#settings', function() {
 		if (localStorage) {
 			var fS=localStorage.getItem("fS");
 			if (fS === "lg") {
 				$('[name=fSize]').val("lg").slider('refresh');
 				$('#fLabel').css({"font-size":"200%"});
+			}
+			else if (fS === "sm") {
+				$('#fLabel').css({"font-size":"100%"});
 			}
 		}
 	});
@@ -81,7 +74,7 @@
 	</div>
 	<div data-role="content" class="ui-content" id="content">
 		<form id="settings-pane" onsubmit="saveFont()">
-		<div >
+		<div>
 			<label for="fSize" id="fLabel">Select your desired font size:</label>
 			<select name="fSize" id="fSize" data-role="slider" data-corners="false">
 				<option value="sm">Small</option>

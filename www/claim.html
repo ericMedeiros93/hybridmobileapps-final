@@ -1,0 +1,76 @@
+<!DOCTYPE html> 
+<html> 
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>nulogx Mobile</title>
+	<style type="text/css">
+		.center {
+			text-align: center;
+		}
+		#cForm {
+			width:100%;
+		}
+	</style>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+	<link rel="stylesheet" href="css/themes/nulogx-green.min.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+	<script type="text/javascript" src="http://jquery-ui-map.googlecode.com/svn/trunk/ui/min/jquery.ui.map.full.min.js"></script>
+    <script type="text/javascript" src="http://jquery-ui-map.googlecode.com/svn/trunk/ui/jquery.ui.map.extensions.js"></script>
+    
+	<!-- Keyless Google API script -->
+    <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?&sensor=false">
+    </script>
+	<script type="text/javascript">
+	$(document).on('pagebeforeshow', '#claim', function() {
+		if (localStorage) {
+			var fS=localStorage.getItem("fS");
+			if (fS === "lg") {
+				$('#claimLabel').css({"font-size":"200%"});
+			}
+		}
+	});
+	</script>
+	
+
+</head>
+
+<body>
+<!-- Page 1 -->
+<div data-role="page" id="claim" data-theme="a">
+	
+	<div data-role="header" data-add-back-btn="true">
+		<a href="../" data-rel="back">Back</a>
+		<h1>nulogx Mobile</h1>
+		<nav data-role="navbar">
+			<ul>
+				<li><a href="index.html" data-ajax="false" data-icon="home" data-iconpos="top">Home</a></li>
+				<li><a href="claim.html" class="ui-btn-active ui-state-persist" data-ajax="false" data-icon="edit" data-iconpos="top">Claim</a></li>
+				<li><a href="location.html" data-ajax="false" data-icon="location" data-iconpos="top">Map</a></li>
+				<li><a href="start.html" data-ajax="false" data-icon="check" data-iconpos="top">Route</a></li>
+				<li><a href="settings.html" data-ajax="false" data-icon="gear" data-iconpos="top">Settings</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div data-role="content" class="ui-content" id="content">
+		<form id="signIn" onsubmit="return validateForm()">
+		<div id="cForm">
+            <p id="claimLabel">Please enter all information to submit a claim.</p>
+            <label for="un" class="ui-hidden-accessible">Username:</label>
+            <input type="number" name="loadNum" id="loadNum" value="" placeholder="Load #" data-theme="a">
+            <label for="pw" class="ui-hidden-accessible">Password:</label>
+            <input type="date" name="claimDate" id="claimDate" value="" placeholder="Date of Claim (yyyy-mm-dd)" data-theme="a">
+            <button type="submit" id="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Submit</button>
+        </div>
+		</form>
+	</div>
+	<div data-role="footer">
+		<h4>Developed by NaN</h4>
+	</div>
+</div>
+</body>
+
+</html>
