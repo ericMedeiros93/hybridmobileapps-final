@@ -20,11 +20,12 @@
 			top:47%;
 		}
 		#div-btn-start {
-			length:128px;
-			height:128px;
+			width:100%;
+			min-height:128px;
 		}
 	</style>
 	<script type="text/javascript">
+		var changed=false;
 		/*
 		$(document).on('click', '#div-btn-start', function() {
 			var cur = $('#btn-start').attr("src");
@@ -50,7 +51,14 @@
 		*/
 		
 		function changeImage() {
-			document.getElementById('btn-start').src = "img/btn-end.png";
+			if (changed===false) {
+				document.getElementById('btn-start').src = "img/btn-end.png";
+				changed = true;
+			}
+			else if (changed===true) {
+				document.getElementById('btn-start').src = "img/btn-start.png";
+				changed = false;
+			}
 		}
 		
 	</script>
@@ -70,14 +78,14 @@
 
 <body>
 <!-- Page 1 -->
-<div data-role="page" id="home" data-theme="a">
+<div data-role="page" id="start" data-theme="a">
 	
 	<div data-role="header" data-add-back-btn="true">
 		<a href="../" data-rel="back">Back</a>
 		<h1>nulogx Mobile</h1>
 		<nav data-role="navbar">
 			<ul>
-				<li><a href="index.html" data-icon="home" data-iconpos="top">Home</a></li>
+				<li><a href="index.html" data-ajax="false" data-icon="home" data-iconpos="top">Home</a></li>
 				<li><a href="claim.html" data-ajax="false" data-icon="edit" data-iconpos="top">Submit Claim</a></li>
 				<li><a href="location.html" data-ajax="false" data-icon="location" data-iconpos="top">Check Map</a></li>
 				<li><a href="start.html" class="ui-btn-active ui-state-persist" data-ajax="false" data-icon="check" data-iconpos="top">Start Route</a></li>
