@@ -25,6 +25,26 @@
       src="http://maps.googleapis.com/maps/api/js?&sensor=false">
     </script>
 	<script type="text/javascript">
+	$(document).ready(function() {
+		$.ajax({
+			url : 'json/accounts.json',                          
+			type: 'GET',                   
+			dataType:'json', 			
+			success : function(data) {
+				for (var i=0; i < data.length; i++) {
+					var un = data[i].username.value;
+					alert(un);
+				}
+			}
+		});
+		
+		function validateForm() {
+			for (var i=0; i < account.length; i++) {
+				var un = account[i].username;
+				alert(un);
+			}
+		}
+	});
 	$(document).on('pagebeforeshow', '#home', function() {
 		if (localStorage) {
 			var fS=localStorage.getItem("fS");
@@ -56,7 +76,7 @@
 		</nav>
 	</div>
 	<div data-role="content" class="ui-content" id="content">
-		<form id="signIn" onsubmit="return validateForm()">
+		<form id="signIn" onsubmit="validateForm()">
 		<div id="form1">
             <p id="signInHeader">Please sign in below.</p>
             <label for="un" class="ui-hidden-accessible">Username:</label>
