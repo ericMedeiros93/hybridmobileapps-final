@@ -33,6 +33,9 @@
 			}
 		}
 	});
+	$(document).ready(function() {
+		jQuery('#file').trigger('click');
+	});
 	</script>
 	
 
@@ -63,6 +66,8 @@
             <input type="number" name="loadNum" id="loadNum" value="" placeholder="Load #" data-theme="a">
             <label for="pw" class="ui-hidden-accessible">Password:</label>
             <input type="date" name="claimDate" id="claimDate" value="" placeholder="Date of Claim (yyyy-mm-dd)" data-theme="a">
+			<label for="file" class="ui-hidden-accessible">Upload Photo:</label>
+			<input type="file" id="file" name="file" />
             <button type="submit" id="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Submit</button>
         </div>
 		</form>
