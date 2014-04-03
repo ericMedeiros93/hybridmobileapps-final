@@ -32,21 +32,24 @@
 		$.ajax({
 			url: 'json/accounts.json',                          
 			type: 'GET',   
-			dataType: 'jsonp',				
-			crossDomain: true,
+			dataType: 'json',				
+			//crossDomain: true,
 			success : function(data) {
 				for (var i=0; i < data.length; i++) {
-					var un = data[i].username;
+					var user = data[i].username;
 					//alert(user);
-					alert(un);
+					//alert(un);
 					//alert();
-					/*
-					if (document.getElementById("un") === un) {
-						if (document.getElementById("pw") === data[i].password) {
+					var username = $("#un").val();
+					var password = $("#pw").val();
+					//alert(username);
+					
+					if (username == user) {
+						if (password == data[i].password) {
 							alert("You are now signed in.");
+							break;
 						}
 					}
-					*/
 				}
 			}
 		});
