@@ -12,6 +12,12 @@
 		#form1 {
 			width:100%;
 		}
+		#routeForm {
+		
+		}
+		#curUser {
+			float:right;
+		}
 	</style>
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
 	<link rel="stylesheet" href="css/themes/nulogx-green.min.css" />
@@ -25,40 +31,39 @@
       src="http://maps.googleapis.com/maps/api/js?&sensor=false">
     </script>
 	<script type="text/javascript">
-	$(document).ready(function() {
-
-	});
 	function validateForm() {
 		$.ajax({
-			url: 'json/accounts.json',                          
+			url: 'http://localhost:8888/www/json/accounts.json',                          
 			type: 'GET',   
 			dataType: 'json',				
 			//crossDomain: true,
 			success : function(data) {
 				for (var i=0; i < data.length; i++) {
 					var user = data[i].username;
-					//alert(user);
-					//alert(un);
-					//alert();
 					var username = $("#un").val();
 					var password = $("#pw").val();
-					//alert(username);
 					
 					if (username == user) {
 						if (password == data[i].password) {
 							alert("You are now signed in.");
+							localStorage.setItem("username", username);
+							$('#curUser').text("Signed in as: " + username);
+							$.mobile.changePage("#route");
+							//window.location.href="#route";
 							break;
 						}
 					}
 				}
 			}
 		});
+		return false;
 	}
 	$(document).on('pagebeforeshow', '#home', function() {
 		if (localStorage) {
 			var fS=localStorage.getItem("fS");
 			if (fS === "lg") {
 				$('#signInHeader').css({"font-size":"200%"});
+				$('#routeHeader').css({"font-size":"200%"});
 			}
 		}
 	});
@@ -93,6 +98,38 @@
             <label for="pw" class="ui-hidden-accessible">Password:</label>
             <input type="password" name="pass" id="pw" value="" placeholder="Password" data-theme="a">
             <button type="submit" id="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Sign In</button>
+        </div>
+		</form>
+	</div>
+	<div data-role="footer">
+		<h4>Developed by NaN</h4>
+	</div>
+</div>
+
+<!-- Page 2 -->
+<div data-role="page" id="route" data-theme="a">
+	
+	<div data-role="header" data-add-back-btn="true">
+		<a href="../" data-rel="back">Back</a>
+		<h1>nulogx Mobile</h1>
+		<nav data-role="navbar">
+			<ul>
+				<li><a href="index.html" class="ui-btn-active ui-state-persist" data-icon="home" data-iconpos="top">Home</a></li>
+				<li><a href="claim.html" data-ajax="false" data-icon="edit" data-iconpos="top">Claim</a></li>
+				<li><a href="location.html" data-ajax="false" data-icon="location" data-iconpos="top">Map</a></li>
+				<li><a href="start.html" data-ajax="false" data-icon="check" data-iconpos="top">Route</a></li>
+				<li><a href="settings.html" data-ajax="false" data-icon="gear" data-iconpos="top">Settings</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div data-role="content" class="ui-content" id="content">
+		<div id="curUser"></div>
+		<form id="routeForm" onsubmit="validateRoute()">
+		<div id="routeDiv">
+            <p id="routeHeader">Please enter your Route or Load # for today.</p>
+            <label for="route" class="ui-hidden-accessible">Route # or Load #:</label>
+            <input type="text" name="route" id="route" value="" placeholder="Route or Load #" data-theme="a">
+            <button type="submit" id="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Submit</button>
         </div>
 		</form>
 	</div>

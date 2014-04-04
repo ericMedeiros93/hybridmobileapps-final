@@ -26,7 +26,6 @@
 	</style>
 	<script type="text/javascript">
 		var changed=false;
-		
 		function changeImage() {
 			if (changed===false) {
 				document.getElementById('btn-start').src = "img/btn-end.png";
@@ -72,7 +71,7 @@
 	</div>
 	<div data-role="content" class="ui-content" id="content" onclick="changeImage()">
 		<div id="div-btn-start">
-			<a class="ui-btn"><img id="btn-start" src="img/btn-start.png" width="128px" height="128px"/></a>
+			<a class="ui-btn" id="btnStart"><img id="btn-start" src="img/btn-start.png" width="128px" height="128px"/></a>
 		</div>
 	</div>
 	<div data-role="footer">

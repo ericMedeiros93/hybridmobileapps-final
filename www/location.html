@@ -51,7 +51,7 @@
 				//drawMap(new google.maps.LatLng(38.50, -90.50);
 				alert("Geolocation failed.");
 			}
-			function handleGeoError(err) {
+			function handleGeoError(pos) {
 				if (err.code == 0) {
 					alert("unknown");
 				}
