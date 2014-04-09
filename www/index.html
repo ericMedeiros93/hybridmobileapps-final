@@ -28,6 +28,42 @@
       src="http://maps.googleapis.com/maps/api/js?&sensor=false">
     </script>
 	<script type="text/javascript">
+	$(document).on('pagecreate', '#home', function() {
+		$('#signIn').submit(function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			$.ajax({
+				// Uncomment below if using "python -m SimpleHTTPServer 8888"
+				url: 'http://localhost:8888/www/json/accounts.json',
+				//url: 'json/accounts.json',                    
+				type: 'GET',
+				dataType: 'json',				
+				//crossDomain: true,
+				success : function(data) {
+					for (var i=0; i < data.length; i++) {
+						var user = data[i].username;
+						var username = $("#un").val();
+						var password = $("#pw").val();
+						
+						if (username == user) {
+							if (password == data[i].password) {
+								alert("You are now signed in.");
+								// Store username for display on following pages.
+								localStorage.setItem("username", username);
+								$('#curUser').text("Signed in as: " + username);
+								// Change the page to the route entry page.
+								$.mobile.changePage('#route');
+								//$('#route').trigger('create');
+								//$('#route').page('refresh');
+								//window.location.href="#route";
+								break;
+							}
+						}
+					}
+				}
+			});
+		});
+	});
 	function validateForm() {
 		$.ajax({
 			// Uncomment below if using "python -m SimpleHTTPServer 8888"
@@ -49,8 +85,10 @@
 							localStorage.setItem("username", username);
 							$('#curUser').text("Signed in as: " + username);
 							// Change the page to the route entry page.
-							//$.mobile.changePage("#route");
-							window.location.href="#route";
+							$.mobile.changePage('#route');
+							$('#route').trigger('create');
+							$('#route').page('refresh');
+							//window.location.href="#route";
 							break;
 						}
 					}
@@ -91,7 +129,7 @@
 		</nav>
 	</div>
 	<div data-role="content" class="ui-content" id="content">
-		<form id="signIn" onsubmit="validateForm()">
+		<form id="signIn">
 		<div id="form1">
             <p id="signInHeader">Please sign in below.</p>
             <label for="un" class="ui-hidden-accessible">Username:</label>
