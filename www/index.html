@@ -12,9 +12,6 @@
 		#form1 {
 			width:100%;
 		}
-		#routeForm {
-		
-		}
 		#curUser {
 			float:right;
 		}
@@ -33,7 +30,9 @@
 	<script type="text/javascript">
 	function validateForm() {
 		$.ajax({
-			url: 'http://localhost:8888/www/json/accounts.json',                          
+			// Uncomment below if using "python -m SimpleHTTPServer 8888"
+			//url: 'http://localhost:8888/www/json/accounts.json',      
+			url: 'json/accounts.json',                    
 			type: 'GET',   
 			dataType: 'json',				
 			//crossDomain: true,
@@ -46,8 +45,10 @@
 					if (username == user) {
 						if (password == data[i].password) {
 							alert("You are now signed in.");
+							// Store username for display on following pages.
 							localStorage.setItem("username", username);
 							$('#curUser').text("Signed in as: " + username);
+							// Change the page to the route entry page.
 							$.mobile.changePage("#route");
 							//window.location.href="#route";
 							break;
