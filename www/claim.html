@@ -11,7 +11,7 @@
 		}
 		#cForm {
 			width:100%;
-			margin-top:5.5em;
+			margin-top:1em;
 		}
 		#signIn {
 			margin-top:0em;
@@ -63,11 +63,12 @@
 
 <body>
 <!-- Page 1 -->
-<div data-role="page" id="claim" data-theme="a">
+<div data-role="page" id="claim" data-theme="a" data-url="claim">
 	
 	<div data-role="header" data-add-back-btn="true">
 		<a href="../" data-rel="back">Back</a>
 		<h1>nulogx Mobile</h1>
+		<button type="button" id="signOut">Sign out</button>
 		<nav data-role="navbar">
 			<ul>
 				<li><a href="index.html" data-ajax="false" data-icon="home" data-iconpos="top">Home</a></li>
@@ -81,7 +82,6 @@
 	<div data-role="content" class="ui-content" id="content">
 		<div id="userStatus">
 			<div id="curUser"></div>
-			<button id="signOut">Sign out</button>
 		</div>
 		<form id="signIn">
 		<div id="cForm">

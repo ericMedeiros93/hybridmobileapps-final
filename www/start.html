@@ -17,7 +17,7 @@
 		#div-btn-start {
 			width:100%;
 			min-height:128px;
-			margin-top:5em;
+			margin-top:2em;
 		}
 		#signIn {
 		}
@@ -78,11 +78,12 @@
 
 <body>
 <!-- Page 1 -->
-<div data-role="page" id="start" data-theme="a">
+<div data-role="page" id="start" data-theme="a" data-url="start">
 	
 	<div data-role="header" data-add-back-btn="true">
 		<a href="../" data-rel="back">Back</a>
 		<h1>nulogx Mobile</h1>
+		<button id="signOut">Sign out</button>
 		<nav data-role="navbar">
 			<ul>
 				<li><a href="index.html" data-ajax="false" data-icon="home" data-iconpos="top">Home</a></li>
@@ -96,11 +97,13 @@
 	<div data-role="content" class="ui-content" id="content" onclick="changeImage()">
 		<div id="userStatus">
 			<div id="curUser"></div>
-			<button id="signOut">Sign out</button>
 		</div>
 		<div id="div-btn-start">
 			<a class="ui-btn" id="btnStart"><img id="btn-start" alt="Start Route" src="img/btn-start.png" width="128px" height="128px"/></a>
 		</div>
+	</div>
+	<div data-role="footer">
+		<h4>Developed by NaN</h4>
 	</div>
 </div>
 </body>

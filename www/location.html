@@ -163,6 +163,7 @@
 		var user=localStorage.getItem("username");
 		if (user === null || user === "") {
 			$.mobile.changePage("index.html");
+			//$("#content").load("index.html");
 		}
 		else {	
 			localStorage.removeItem("username");
@@ -175,10 +176,11 @@
 
 <body>
 	<!-- Page 1 -->
-	<div data-role="page" id="location" data-theme="a">
+	<div data-role="page" id="location" data-theme="a" data-url="location">
 		<div data-role="header">
 			<a href="../" data-rel="back">Back</a>
 			<h1>nulogx Mobile</h1>
+			<button id="signOut">Sign out</button>
 			<nav data-role="navbar">
 			<ul>
 			<li><a href="index.html" data-ajax="false" data-icon="home" data-iconpos="top">Home</a></li>
@@ -190,10 +192,9 @@
 			</nav>
 		</div>
 		<div data-role="content" class="ui-content" id="content">
-		<div id="userStatus">
-			<div id="curUser"></div>
-			<button id="signOut">Sign out</button>
-		</div>
+			<div id="userStatus">
+				<div id="curUser"></div>
+			</div>
 			<div id="map_canvas"></div>
 		</div>
 	</div>
