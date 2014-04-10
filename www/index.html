@@ -50,7 +50,8 @@
 								alert("You are now signed in.");
 								// Store username for display on following pages.
 								localStorage.setItem("username", username);
-								$('#curUser').text("Signed in as: " + username);
+								// Should be done for a pagecreate on route.
+								//$('#curUser').text("Signed in as: " + username);
 								// Change the page to the route entry page.
 								$.mobile.changePage('#route');
 								//$('#route').trigger('create');
@@ -63,6 +64,12 @@
 				}
 			});
 		});
+	});
+	$(document).on('pagebeforeshow', '#route', function() {
+		var user=localStorage.getItem("username");
+		if (user !== null || user !== "") {
+			$('#curUser').text("Signed in as: " + user);
+		}
 	});
 	function validateForm() {
 		$.ajax({
@@ -83,11 +90,11 @@
 							alert("You are now signed in.");
 							// Store username for display on following pages.
 							localStorage.setItem("username", username);
-							$('#curUser').text("Signed in as: " + username);
+							//$('#curUser').text("Signed in as: " + username);
 							// Change the page to the route entry page.
-							$.mobile.changePage('#route');
-							$('#route').trigger('create');
-							$('#route').page('refresh');
+							//$.mobile.changePage('#route');
+							//$('#route').trigger('create');
+							//$('#route').page('refresh');
 							//window.location.href="#route";
 							break;
 						}
@@ -165,7 +172,7 @@
 		<div id="curUser"></div>
 		<form id="routeForm" onsubmit="validateRoute()">
 		<div id="routeDiv">
-            <p id="routeHeader">Please enter your Route or Load # for today.</p>
+            <p id="routeHeader">Enter your Route or Load # for today.</p>
             <label for="route" class="ui-hidden-accessible">Route # or Load #:</label>
             <input type="text" name="route" id="route" value="" placeholder="Route or Load #" data-theme="a">
             <button type="button" id="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Submit</button>

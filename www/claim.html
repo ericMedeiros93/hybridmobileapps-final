@@ -12,35 +12,41 @@
 		#cForm {
 			width:100%;
 		}
-		#curUser {
+		#signIn {
+			margin-top:3.5em;
+		}
+		#userStatus {
 			float:right;
+			padding:0px;
 		}
 	</style>
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
 	<link rel="stylesheet" href="css/themes/nulogx-green.min.css" />
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
-	<script type="text/javascript" src="http://jquery-ui-map.googlecode.com/svn/trunk/ui/min/jquery.ui.map.full.min.js"></script>
-    <script type="text/javascript" src="http://jquery-ui-map.googlecode.com/svn/trunk/ui/jquery.ui.map.extensions.js"></script>
+	<script src="http://jquery-ui-map.googlecode.com/svn/trunk/ui/min/jquery.ui.map.full.min.js"></script>
     
 	<!-- Keyless Google API script -->
     <script type="text/javascript"
       src="http://maps.googleapis.com/maps/api/js?&sensor=false">
     </script>
 	<script type="text/javascript">
-	$(document).on('pagebeforeshow', '#claim', function() {
+	$(document).on('pagecreate', '#claim', function() {
 		if (localStorage) {
 			var fS=localStorage.getItem("fS");
+			var user=localStorage.getItem("username");
+			if (user !== null && user !== "") {
+				$('#curUser').text("Signed in as: " + user);
+			}
 			if (fS === "lg") {
 				$('#claimLabel').css({"font-size":"200%"});
 			}
 		}
-	});
-	$(document).ready(function() {
-		var currentUser = localStorage.getItem("user");
-		if (currentUser != null && currentUser != "") {
-			$('#curUser').text("Signed in as: " + currentUser);
-		}
+		$('#signOut').on('click', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			localStorage.removeItem("username");
+		});
 	});
 	</script>
 	
@@ -65,13 +71,16 @@
 		</nav>
 	</div>
 	<div data-role="content" class="ui-content" id="content">
-		<form id="signIn" onsubmit="return validateForm()">
+		<div id="userStatus">
+			<div id="curUser"></div>
+			<button id="signOut">Sign out</button>
+		</div>
+		<form id="signIn">
 		<div id="cForm">
-			<div="curUser"></div>
-            <p id="claimLabel">Please enter all information to submit a claim.</p>
-            <label for="un" class="ui-hidden-accessible">Username:</label>
+            <p id="claimLabel">Enter all information to submit a claim.</p>
+            <label for="un" class="ui-hidden-accessible">Load #:</label>
             <input type="number" name="loadNum" id="loadNum" value="" placeholder="Load #" data-theme="a">
-            <label for="pw" class="ui-hidden-accessible">Password:</label>
+            <label for="pw" class="ui-hidden-accessible">Date of Claim:</label>
             <input type="date" name="claimDate" id="claimDate" value="" placeholder="Date of Claim (yyyy-mm-dd)" data-theme="a">
 			<label for="file" class="ui-hidden-accessible">Upload Photo:</label>
 			<input type="file" id="file" name="file" />
