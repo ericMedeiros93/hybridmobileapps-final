@@ -11,7 +11,7 @@
 		}
 		#cForm {
 			width:100%;
-			margin-top:6em;
+			margin-top:4em;
 		}
 		#signIn {
 			margin-top:0em;
@@ -54,6 +54,7 @@
 				}
 				else {	
 					localStorage.removeItem("username");
+					location.reload();
 				}
 			});
 		});

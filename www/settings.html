@@ -18,6 +18,22 @@
 	<script src="js/modernizr.custom.33580.js"></script>
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
 	<script type="text/javascript">
+	/*
+	$(document).on('pagecreate', '#settings', function() {
+		$('#button-save').submit(function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			var selection = $('[name=fSize]').val();
+		
+			if (localStorage) {
+				localStorage.setItem("fS", selection);
+			}
+			else {
+				alert("Browser is not supported.");
+			}
+		});
+	});
+	*/
 	$(document).on('pagebeforeshow', '#settings', function() {
 		if (localStorage) {
 			var fS=localStorage.getItem("fS");
@@ -36,7 +52,6 @@
 		else {
 			alert("Browser is not supported.");
 		}
-		
 	}
 	</script>
 	

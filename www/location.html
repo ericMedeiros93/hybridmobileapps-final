@@ -152,11 +152,10 @@ $(document).on('pagecreate', '#location', function() {
 		var user=localStorage.getItem("username");
 		if (user === null || user === "") {
 			$.mobile.changePage("index.html");
-			$('#home').trigger('create');
-			$('#home').page('refresh');
 		}
 		else {	
 			localStorage.removeItem("username");
+			location.reload();
 		}
 	});
 });
