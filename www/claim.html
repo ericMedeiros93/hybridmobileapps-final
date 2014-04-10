@@ -11,9 +11,10 @@
 		}
 		#cForm {
 			width:100%;
+			margin-top:6em;
 		}
 		#signIn {
-			margin-top:3.5em;
+			margin-top:0em;
 		}
 		#userStatus {
 			float:right;
@@ -31,26 +32,32 @@
       src="http://maps.googleapis.com/maps/api/js?&sensor=false">
     </script>
 	<script type="text/javascript">
-	$(document).on('pagecreate', '#claim', function() {
-		if (localStorage) {
-			var fS=localStorage.getItem("fS");
-			var user=localStorage.getItem("username");
-			if (user !== null && user !== "") {
-				$('#curUser').text("Signed in as: " + user);
+		$(document).on('pagecreate', '#claim', function() {
+			if (localStorage) {
+				var fS=localStorage.getItem("fS");
+				var user=localStorage.getItem("username");
+				if (user !== null && user !== "") {
+					$('#curUser').text("Signed in as: " + user);
+				}
+				else
+					$('#signOut').html("Sign in");
+				if (fS === "lg") {
+					$('#claimLabel').css({"font-size":"200%"});
+				}
 			}
-			if (fS === "lg") {
-				$('#claimLabel').css({"font-size":"200%"});
-			}
-		}
-		$('#signOut').on('click', function(e) {
-			e.preventDefault();
-			e.stopPropagation();
-			localStorage.removeItem("username");
+			$('#signOut').on('click', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				var user=localStorage.getItem("username");
+				if (user === null || user === "") {
+					$.mobile.changePage("index.html");
+				}
+				else {	
+					localStorage.removeItem("username");
+				}
+			});
 		});
-	});
 	</script>
-	
-
 </head>
 
 <body>
