@@ -18,16 +18,21 @@
 	</style>
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
 	<link rel="stylesheet" href="css/themes/nulogx-green.min.css" />
+	<!--
+	<link rel="stylsheet" href="css/jquery.mobile-1.4.2.min.css" />
+	<script type="text/javascript" src="js/jquery-2.1.0.min.js"</script>
+	<script type="text/javascript" src="js/jquery.mobile-1.4.2.min.js"</script>
+	-->
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
 	<script type="text/javascript" src="http://jquery-ui-map.googlecode.com/svn/trunk/ui/min/jquery.ui.map.full.min.js"></script>
-    <!--<script type="text/javascript" src="http://jquery-ui-map.googlecode.com/svn/trunk/ui/jquery.ui.map.extensions.js"></script>-->
     
 	<!-- Keyless Google API script -->
     <script type="text/javascript"
       src="http://maps.googleapis.com/maps/api/js?&sensor=false">
     </script>
 	<script type="text/javascript">
+	
 	$(document).on('pagecreate', '#home', function() {
 		$('#signIn').submit(function(e) {
 			e.preventDefault();
@@ -45,18 +50,13 @@
 						var username = $("#un").val();
 						var password = $("#pw").val();
 						
-						if (username == user) {
+						if (username === user) {
 							if (password == data[i].password) {
 								alert("You are now signed in.");
 								// Store username for display on following pages.
 								localStorage.setItem("username", username);
-								// Should be done for a pagecreate on route.
-								//$('#curUser').text("Signed in as: " + username);
 								// Change the page to the route entry page.
 								$.mobile.changePage('#route');
-								//$('#route').trigger('create');
-								//$('#route').page('refresh');
-								//window.location.href="#route";
 								break;
 							}
 						}
@@ -65,45 +65,13 @@
 			});
 		});
 	});
+	
 	$(document).on('pagebeforeshow', '#route', function() {
 		var user=localStorage.getItem("username");
-		if (user !== null || user !== "") {
+		if (user !== null || user !== "" || user!== 'undefined') {
 			$('#curUser').text("Signed in as: " + user);
 		}
 	});
-	function validateForm() {
-		$.ajax({
-			// Uncomment below if using "python -m SimpleHTTPServer 8888"
-			//url: 'http://localhost:8888/www/json/accounts.json',      
-			url: 'json/accounts.json',                    
-			type: 'GET',
-			dataType: 'json',				
-			//crossDomain: true,
-			success : function(data) {
-				for (var i=0; i < data.length; i++) {
-					var user = data[i].username;
-					var username = $("#un").val();
-					var password = $("#pw").val();
-					
-					if (username == user) {
-						if (password == data[i].password) {
-							alert("You are now signed in.");
-							// Store username for display on following pages.
-							localStorage.setItem("username", username);
-							//$('#curUser').text("Signed in as: " + username);
-							// Change the page to the route entry page.
-							//$.mobile.changePage('#route');
-							//$('#route').trigger('create');
-							//$('#route').page('refresh');
-							//window.location.href="#route";
-							break;
-						}
-					}
-				}
-			}
-		});
-		return false;
-	}
 	// Check what the font size setting is.
 	$(document).on('pagebeforeshow', '#home', function() {
 		if (localStorage) {
@@ -121,7 +89,7 @@
 
 <body>
 <!-- Page 1 -->
-<div data-role="page" id="home" data-theme="a" data-url="home">
+<div data-role="page" id="home" data-theme="a">
 	
 	<div data-role="header" data-add-back-btn="true">
 		<a href="../" data-rel="back">Back</a>

@@ -11,10 +11,9 @@
 		}
 		#cForm {
 			width:100%;
-			margin-top:1em;
 		}
-		#signIn {
-			margin-top:0em;
+		#claims {
+			margin-top:1em;
 		}
 		#userStatus {
 			float:right;
@@ -23,6 +22,11 @@
 	</style>
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
 	<link rel="stylesheet" href="css/themes/nulogx-green.min.css" />
+	<!--
+	<link rel="stylsheet" href="css/jquery.mobile-1.4.2.min.css" />
+	<script type="text/javascript" src="js/jquery-2.1.0.min.js"</script>
+	<script type="text/javascript" src="js/jquery.mobile-1.4.2.min.js"</script>
+	-->
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
 	<script src="http://jquery-ui-map.googlecode.com/svn/trunk/ui/min/jquery.ui.map.full.min.js"></script>
@@ -36,11 +40,12 @@
 			if (localStorage) {
 				var fS=localStorage.getItem("fS");
 				var user=localStorage.getItem("username");
-				if (user !== null && user !== "") {
+				if (user !== null && user !== "" && user !== 'undefined') {
 					$('#curUser').text("Signed in as: " + user);
 				}
-				else
+				else {
 					$('#signOut').html("Sign in");
+				}
 				if (fS === "lg") {
 					$('#claimLabel').css({"font-size":"200%"});
 				}
@@ -49,7 +54,7 @@
 				e.preventDefault();
 				e.stopPropagation();
 				var user=localStorage.getItem("username");
-				if (user === null || user === "") {
+				if (user === null || user === "" || user === 'undefined') {
 					$.mobile.changePage("index.html");
 				}
 				else {	
@@ -57,13 +62,20 @@
 					location.reload();
 				}
 			});
+			
+			$('#btnClaim').on('click', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				alert("Your claim has been submitted.");
+				document.getElementById("cForm").reset();
+			});
 		});
 	</script>
 </head>
 
 <body>
 <!-- Page 1 -->
-<div data-role="page" id="claim" data-theme="a" data-url="claim">
+<div data-role="page" id="claim" data-theme="a">
 	
 	<div data-role="header" data-add-back-btn="true">
 		<a href="../" data-rel="back">Back</a>
@@ -83,7 +95,7 @@
 		<div id="userStatus">
 			<div id="curUser"></div>
 		</div>
-		<form id="signIn">
+		<form id="claims">
 		<div id="cForm">
             <p id="claimLabel">Enter all information to submit a claim.</p>
             <label for="un" class="ui-hidden-accessible">Load #:</label>
@@ -92,7 +104,7 @@
             <input type="date" name="claimDate" id="claimDate" value="" placeholder="Date of Claim (yyyy-mm-dd)" data-theme="a">
 			<label for="file" class="ui-hidden-accessible">Upload Photo:</label>
 			<input type="file" id="file" name="file" />
-            <button type="submit" id="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Submit</button>
+            <button type="submit" id="btnClaim" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Submit</button>
         </div>
 		</form>
 	</div>
