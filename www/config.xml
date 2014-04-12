@@ -8,7 +8,7 @@
 
         <!-- versionCode is optional and Android only -->
 
-        <preference name="phonegap-version" value="2.9.0" />
+        <preference name="phonegap-version" value="3.3.0" />
 
         <name>nulogx Mobile</name>
 
@@ -21,6 +21,6 @@
         </author>
         
       <gap:splash src="res/son_goku.png" gap:platform="ios" width="640" height="1136" />
-      <icon src="res/little_goku.png" gap:platform="ios" width="72" height="72" />
+      <icon src="img/icon.png" gap:platform="ios" width="72" height="72" />
 
 </widget>

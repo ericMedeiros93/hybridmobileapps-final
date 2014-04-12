@@ -57,7 +57,8 @@
 				e.stopPropagation();
 				var user=localStorage.getItem("username");
 				if (user === null || user === "") {
-					$.mobile.changePage("index.html");
+					//$.mobile.changePage("index.html");
+					window.location.assign("index.html");
 				}
 				else {	
 					localStorage.removeItem("username");
