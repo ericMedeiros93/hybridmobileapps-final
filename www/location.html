@@ -61,6 +61,8 @@
 				if(localStorage){
 					if(localStorage.getItem("username")== null){
 						alert("You must be signed in to view the route");
+						window.location.assign("index.html");
+						
 					}else{
 						getData(pos);
 					}
