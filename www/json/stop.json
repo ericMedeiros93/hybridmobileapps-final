@@ -22,5 +22,11 @@
       "dest":"The Hudson Bay Company",
       "lat":"43.652107",
       "lng":"-79.379766"
+   },
+   {
+      "id":"5",
+      "dest":"Square One",
+      "lat":"43.593416",
+      "lng":"-79.64552"
    }
 ]
