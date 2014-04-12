@@ -58,7 +58,16 @@
 	$(document).on('pagebeforeshow', '#location', function() {
 		if ( navigator.geolocation ) {
 			function success(pos) {
-				getData(pos);
+				if(localStorage){
+					if(localStorage.getItem("username")== null){
+						alert("You must be signed in to view the route");
+					}else{
+						getData(pos);
+					}
+				}else{
+					getData(pos);
+				
+				}
 			}
 			function fail(pos) {
 				//drawMap(new google.maps.LatLng(38.50, -90.50);
