@@ -45,12 +45,21 @@
 		$(document).on('pagecreate', '#start', function() {
 			if (localStorage) {
 				var fS=localStorage.getItem("fS");
+				var rS=localStorage.getItem("RS");
 				var user=localStorage.getItem("username");
 				if (user !== null && user !== "" && user !== 'undefined') {
 					$('#curUser').text("Signed in as: " + user);
 				}
-				else
+				else{
 					$('#signOut').html("Sign in");
+				}
+
+				if(rS !== null && rS !== "" && rS !== 'undefined'){
+					
+					if(rS == 1){
+						document.getElementById('btn-start').src = "img/btn-end.png";
+					}
+				}
 			}
 			$('#signOut').on('click', function(e) {
 				e.preventDefault();
@@ -69,14 +78,37 @@
 	</script>
 	<script type="text/javascript">
 		var changed=false;
+		var user=localStorage.getItem("username");
+		alert(user);
 		function changeImage() {
 			if (changed===false) {
-				document.getElementById('btn-start').src = "img/btn-end.png";
-				changed = true;
+				if(user== null || user == "" ){
+						alert("You must be signed In to start the route!");
+					}else{
+						
+						alert(user);
+						document.getElementById('btn-start').src = "img/btn-end.png";
+						changed = true;
+						if(localStorage){
+							localStorage.setItem("RS", 1);
+						}
+					}
+				
+				
 			}
 			else if (changed===true) {
-				document.getElementById('btn-start').src = "img/btn-start.png";
-				changed = false;
+				if(user!= null || user != "" ){
+							
+						alert("You must be signed In to end the route!");
+						}
+					}else{
+						document.getElementById('btn-start').src = "img/btn-start.png";
+						changed = false;
+						if(localStorage){
+							localStorage.setItem("RS", 0);
+					}
+				
+				
 			}
 		}
 	</script>
