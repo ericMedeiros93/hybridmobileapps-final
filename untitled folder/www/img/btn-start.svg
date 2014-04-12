@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="960px" height="560px" viewBox="0 0 960 560" enable-background="new 0 0 960 560" xml:space="preserve">
+<g>
+	<circle fill="#E92900" cx="480.139" cy="268.924" r="32"/>
+	<circle fill="#E92A00" cx="480.128" cy="269.077" r="31.643"/>
+	<circle fill="#EA2B00" cx="480.118" cy="269.23" r="31.286"/>
+	<circle fill="#EA2C00" cx="480.108" cy="269.383" r="30.928"/>
+	<circle fill="#EB2D00" cx="480.098" cy="269.536" r="30.571"/>
+	<circle fill="#EB2E00" cx="480.088" cy="269.689" r="30.214"/>
+	<circle fill="#EC2F00" cx="480.078" cy="269.842" r="29.857"/>
+	<circle fill="#EC3000" cx="480.067" cy="269.996" r="29.5"/>
+	<circle fill="#ED3100" cx="480.057" cy="270.148" r="29.143"/>
+	<circle fill="#ED3200" cx="480.047" cy="270.301" r="28.786"/>
+	<circle fill="#ED3300" cx="480.037" cy="270.454" r="28.428"/>
+	<circle fill="#EE3400" cx="480.026" cy="270.607" r="28.072"/>
+	<circle fill="#EE3500" cx="480.016" cy="270.76" r="27.714"/>
+	<circle fill="#EF3600" cx="480.006" cy="270.914" r="27.357"/>
+	<circle fill="#EF3700" cx="479.996" cy="271.066" r="27"/>
+	<circle fill="#F03800" cx="479.985" cy="271.22" r="26.643"/>
+	<circle fill="#F03900" cx="479.976" cy="271.373" r="26.286"/>
+	<circle fill="#F13A00" cx="479.965" cy="271.526" r="25.928"/>
+	<circle fill="#F13B00" cx="479.955" cy="271.679" r="25.571"/>
+	<circle fill="#F23C00" cx="479.945" cy="271.832" r="25.214"/>
+	<circle fill="#F23D00" cx="479.935" cy="271.985" r="24.857"/>
+	<circle fill="#F23E00" cx="479.924" cy="272.138" r="24.5"/>
+	<circle fill="#F33F00" cx="479.914" cy="272.291" r="24.143"/>
+	<circle fill="#F34000" cx="479.904" cy="272.445" r="23.786"/>
+	<circle fill="#F44100" cx="479.894" cy="272.597" r="23.428"/>
+	<circle fill="#F44100" cx="479.884" cy="272.75" r="23.071"/>
+	<circle fill="#F54200" cx="479.874" cy="272.903" r="22.714"/>
+	<circle fill="#F54300" cx="479.863" cy="273.057" r="22.357"/>
+	<circle fill="#F64400" cx="479.853" cy="273.209" r="22"/>
+	<circle fill="#F64500" cx="479.843" cy="273.362" r="21.643"/>
+	<circle fill="#F64600" cx="479.833" cy="273.515" r="21.285"/>
+	<circle fill="#F74700" cx="479.822" cy="273.669" r="20.929"/>
+	<circle fill="#F74800" cx="479.812" cy="273.822" r="20.572"/>
+	<circle fill="#F84900" cx="479.802" cy="273.975" r="20.214"/>
+	<circle fill="#F84A00" cx="479.792" cy="274.128" r="19.857"/>
+	<circle fill="#F94B00" cx="479.782" cy="274.281" r="19.5"/>
+	<circle fill="#F94C00" cx="479.771" cy="274.434" r="19.143"/>
+	<circle fill="#FA4D00" cx="479.761" cy="274.587" r="18.786"/>
+	<circle fill="#FA4E00" cx="479.751" cy="274.74" r="18.428"/>
+	<circle fill="#FB4F00" cx="479.741" cy="274.893" r="18.072"/>
+	<circle fill="#FB5000" cx="479.73" cy="275.046" r="17.714"/>
+	<circle fill="#FB5100" cx="479.72" cy="275.199" r="17.357"/>
+	<circle fill="#FC5200" cx="479.71" cy="275.353" r="17"/>
+	<circle fill="#FC5300" cx="479.7" cy="275.506" r="16.643"/>
+	<circle fill="#FD5400" cx="479.689" cy="275.659" r="16.286"/>
+	<circle fill="#FD5500" cx="479.68" cy="275.812" r="15.929"/>
+	<circle fill="#FE5600" cx="479.669" cy="275.965" r="15.572"/>
+	<circle fill="#FE5700" cx="479.659" cy="276.118" r="15.214"/>
+	<circle fill="#FF5800" cx="479.649" cy="276.271" r="14.857"/>
+	<circle fill="#FF5900" cx="479.639" cy="276.424" r="14.5"/>
+</g>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="464.167" y1="250.8594" x2="495.4717" y2="250.8594">
+	<stop  offset="0" style="stop-color:#FFFFFF"/>
+	<stop  offset="1" style="stop-color:#000000"/>
+</linearGradient>
+<ellipse fill="url(#SVGID_1_)" cx="479.819" cy="250.859" rx="15.652" ry="11.064"/>
+<rect x="467.389" y="263.674" fill="none" width="25.5" height="10.5"/>
+<text transform="matrix(1 0 0 1 467.3887 272.1938)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="12">Start</text>
+</svg>
