@@ -1,8 +1,11 @@
+//Check to make sure we can get user location
 $(document).on('pagebeforeshow', '#location', function() {
 	if (navigator.geolocation) {
 		function success(pos) {
+			//Check for local storage
 			if (localStorage) {
-				if (localStorage.getItem("username") == null) {
+				//Check if user is signed in
+				if (localStorage.getItem("username") === null) {
 					alert("You must be signed in to view the route");
 					window.location.assign("index.html");
 
@@ -21,7 +24,7 @@ $(document).on('pagebeforeshow', '#location', function() {
 		}
 
 		function handleGeoError(pos) {
-			if (err.code == 0) {
+			if (err.code === 0) {
 				alert("unknown");
 			}
 			if (err.code == 1) {
@@ -39,21 +42,22 @@ $(document).on('pagebeforeshow', '#location', function() {
 	}
 
 	var route = new Route();
-
+	//Method parses through the json file and adds values to the route variable
 	function getData(pos) {
 		$.ajax({
 
-			url: 'json/stop.json',
+			url: 'http://mobile.sheridanc.on.ca/~medeeric/SYST35300/hybridmobileapps-final-master/www/json/stop.json',
 			type: 'GET',
 			dataType: 'json',
 			//crossDomain: true,
 			success: function(data) {
 				for (var i = 0; i < data.length; i++) {
 
-
+					//Add the last stop as the finish
 					if (i == (data.length - 1)) {
 						route.finish = new google.maps.LatLng(data[i].lat, data[i].lng);
 					} else {
+						//Add stops as waypoints
 						route.addStop({
 							location: (new google.maps.LatLng(data[i].lat, data[i].lng)),
 							stopover: true
@@ -65,7 +69,7 @@ $(document).on('pagebeforeshow', '#location', function() {
 				drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
 			},
 			error: function() {
-				alert("Error");
+				alert("Could not get data. Please ensure you are connected to the internet.");
 			}
 		});
 	}
@@ -85,11 +89,11 @@ $(document).on('pagebeforeshow', '#location', function() {
 			map: map,
 			title: "You are here."
 		});
-		// 
+		//
 		var directionsService = new google.maps.DirectionsService();
 		var directionsDisplay = new google.maps.DirectionsRenderer();
 
-
+		//Plot markers on the map, inclues start, finish, and stops in between.
 		directionsDisplay.setMap(map);
 		var request = {
 			origin: route.start,
@@ -107,7 +111,7 @@ $(document).on('pagebeforeshow', '#location', function() {
 	}
 });
 
-
+//Display the user name, sign in/sign out button function
 $(document).on('pagecreate', '#location', function() {
 	if (localStorage) {
 		var fS = localStorage.getItem("fS");

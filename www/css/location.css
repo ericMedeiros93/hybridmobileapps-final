@@ -1,0 +1,23 @@
+#map_canvas {
+	width:100%;
+	height:90%;
+	margin-top:2em;
+}
+#userStatus {
+	float:right;
+	padding:0px;
+}
+#curUser {
+	font-weight:bold;
+}
+#curRoute {
+	float:left;
+	font-weight:bold;
+}
+#content {
+	position: absolute;
+	top: 120px;
+	right: 0px;
+	bottom: 40px;
+	left: 0px;
+}
